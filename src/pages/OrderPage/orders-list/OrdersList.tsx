@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
-import CartEmpty from '../../../components/cart-empty/CartEmpty';
 import { useAppDispatch, useAppSelector } from '../../../hooks/redux';
 import { useAuth } from '../../../hooks/useAuth';
 import { fetchOrder } from '../../../store/order/order.slice';
 import OrderItem from './order-item/OrderItem';
 import styles from './OrdersList.module.scss';
 import HistoryEmpty from '../../../components/cart-empty/HistoryEmpty';
+// import CartEmpty from '../../../components/cart-empty/CartEmpty';
 
 const OrdersList = () => {
   const { id } = useAuth();
@@ -17,6 +17,7 @@ const OrdersList = () => {
   }, [id]);
 
   if (!order.length) {
+    // return <CartEmpty title='주문내역'/>
     return <HistoryEmpty title='주문 내역' />;
   }
 

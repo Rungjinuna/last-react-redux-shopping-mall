@@ -36,8 +36,6 @@ const Nav = () => {
               {' '}
               <FiShoppingCart />
             </Link>
-
-            {/* 가져온 products의 length 갯수를 시멘틱 태그 안에 표시 */}
             {products.length > 0 && <b>{products.length}</b>}
             {products.length > 0 && (
               <div className={styles.nav_hover_cart}>

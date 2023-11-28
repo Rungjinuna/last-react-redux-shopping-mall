@@ -7,7 +7,7 @@ export const fetchOrder = createAsyncThunk(
   async (userId: string, thunkAPI) => {
     try {
       const response = await axios.get<IOrder[]>(
-        `https://<>.mockapi.io/orders?search=${userId}`
+        `https://656035cc83aba11d99d063e4.mockapi.io/orders?search=${userId}`
       );
       return response.data;
     } catch (err) {

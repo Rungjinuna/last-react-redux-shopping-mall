@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { IProduct } from '../products/products.type';
+import { CartState } from './cart.type';
 
 //주문 정보를 mockaip 서버로 post함
 export const postOrder = createAsyncThunk(
@@ -8,7 +9,7 @@ export const postOrder = createAsyncThunk(
   async (order: CartState, thunkAPI) => {
     try {
       await axios.post(
-        'https://640f6d494ed25579dc4ec41b.mockapi.io/orders',
+        'https://656035cc83aba11d99d063e4.mockapi.io/orders',
         order
       );
 
@@ -19,13 +20,7 @@ export const postOrder = createAsyncThunk(
   }
 );
 
-type CartState = {
-  products: IProduct[];
-  totalPrice: number;
-  userId: string;
-};
-
-const initialState: CartState = {
+export const initialState: CartState = {
   //cartProducts로 저장된 키값 가져와서 초기값 세팅
   //금액은 0으로, user id도 로컬스토리지에서 가져와 초기값 세팅
   products: localStorage.getItem('cartProducts')
@@ -35,6 +30,7 @@ const initialState: CartState = {
   userId: localStorage.getItem('userId')
     ? JSON.parse(localStorage.getItem('userId') || '')
     : '',
+  orders: [],
 };
 
 export const cartSlice = createSlice({
